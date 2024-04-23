@@ -24,7 +24,7 @@ Feature: Create Primary Account Functionality
       | maritalStatus | Married |
       | employmentStatus | student |
       | dateOfBirth | 12/12/1999 |
-    Then user clicks on the "Create Account" button
+    Then user clicks on the Create Account button
     Then user should be navigated to "Sign up your Account page"
     And displayed email address should be the same as the entry
 
@@ -40,6 +40,6 @@ Feature: Create Primary Account Functionality
       | maritalStatus | Married |
       | employmentStatus | student |
       | dateOfBirth | 12/12/1999 |
-    Then user clicks on the "Create Account" button
+    Then user clicks on the Create Account button
     Then error message "Account with email amina@gmail.com is exist" should be displayed
 

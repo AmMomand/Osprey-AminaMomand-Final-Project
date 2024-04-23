@@ -22,5 +22,5 @@ Feature: Profile Management
   @Logout
   Scenario: Validate User is redirected to Home page after logout button is clicked
   Description: When user logs out, user should be redirected to the home page to ensure secure access.
-    When user clicks on the "Logout" button
+    When user clicks on the Logout button
     Then user should be navigated to "Home page"
