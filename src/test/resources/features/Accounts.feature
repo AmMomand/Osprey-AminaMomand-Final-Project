@@ -7,7 +7,8 @@ Feature: Accounts Management
     When user clicks on the Login button
     And user enters valid username "supervisor" and valid password "tek_supervisor"
     And  user clicks on the Sign In button
-    Then user should be navigated to "Customer Service Portal"
+    Then user should be navigated to Customer Service Portal
+    Then user clicks on the Accounts button
 
   @DefaultRows
   Scenario: Verify Default Rows Per Page

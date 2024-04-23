@@ -69,3 +69,36 @@ public class PlansSteps extends SeleniumUtilities {
 
 
 }
+
+/*
+EXPLANATION:
+1. validate_rows_of_data_are_present(int expectedRowCount):
+
+- This method takes an integer parameter expectedRowCount, which represents the expected number of rows on the Plans page.
+- It uses the getDriver().findElements method to find all elements on the page that match the locator PlansPage.PLANS_ALL_ROWS.
+- The size of the resulting list is compared to the expectedRowCount using an Assert statement.
+- If the actual number of rows matches the expected number, the test passes; otherwise, it fails with a message indicating
+  the number of rows is not as expected.
+
+1. validate_create_date_is_today_s_date_in_EST_Time_zone():
+
+- This method retrieves the text of the create date element on the Plans page using the getElementText method.
+- It gets the current date in the EST time zone using LocalDate.now(ZoneId.of("America/New_York")).
+- The current date is formatted in the "MM/dd/yyyy" pattern using DateTimeFormatter.
+- The retrieved create date text is compared to the formatted current date using an Assert statement.
+- If the create date matches today's date in the EST time zone, the test passes; otherwise, it fails with a message
+  indicating the create date is not today's date.
+
+1. validate_expire_date_is_a_day_after_today_date():
+
+- This method retrieves the text of the expire date element on the Plans page using the getElementText method.
+- It gets the current date in the EST time zone using LocalDate.now(ZoneId.of("America/New_York")).
+- The expected expiration date is calculated by adding one day to the current date using today.plusDays(1).
+- The expected expiration date is formatted in the "MM/dd/yyyy" pattern using DateTimeFormatter.
+- The retrieved expire date text is compared to the formatted expected expiration date using an Assert statement.
+- If the expire date matches the expected date (a day after today's date), the test passes; otherwise, it fails with a
+  message indicating the expire date is not a day after today's date.
+
+These methods use a combination of Selenium WebDriver, Java time and date utilities, and Cucumber assertions to verify
+the state of the Plans page.
+ */

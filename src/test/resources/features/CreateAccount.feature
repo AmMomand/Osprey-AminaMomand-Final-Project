@@ -4,12 +4,7 @@ Feature: Create Primary Account Functionality
   Background: Navigating to the Create Primary Account page
   Description: Before user can create an account, user needs to navigate to the Create Primary Account page.
     Given user is on the home page
-    When user clicks on the "Create Primary Account" button
-    Then user should be navigated to "Create Primary Account page"
-
-  @ValidTitle
-  Scenario: Validate Title of the page
-  Description: The title of the page should clearly indicate that user is creating an account to be a primary account holder.
+    When user clicks on the Create Primary Account button
     Then title of page should be "Create Primary Account Holder"
 
   @SuccessfulAccountCreation
@@ -25,7 +20,7 @@ Feature: Create Primary Account Functionality
       | employmentStatus | student |
       | dateOfBirth | 12/12/1999 |
     Then user clicks on the Create Account button
-    Then user should be navigated to "Sign up your Account page"
+    Then user should be navigated to Sign up your account page
     And displayed email address should be the same as the entry
 
   @ExistingEmailError

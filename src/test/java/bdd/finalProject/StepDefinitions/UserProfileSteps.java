@@ -13,10 +13,7 @@ import java.util.List;
 public class UserProfileSteps extends SeleniumUtilities {
 
 
-    @And("user clicks on the Profile button")
-    public void user_clicks_on_Profile_button(){
-        clickElement(UserProfilePage.SIDE_PROFILE_BUTTON);
-    }
+
 
     @Then("validate STATUS is (.*)$")
     public void validate_STATUS_is(String expectedStatus) {
@@ -65,7 +62,7 @@ public class UserProfileSteps extends SeleniumUtilities {
 
     @Then("user clicks on the Logout button")
     public void user_clicks_on_logout(){
-        clickElement(UserProfilePage.LOGOUT_BUTTON);
+        clickOnElement(UserProfilePage.LOGOUT_BUTTON);
 
     }
 

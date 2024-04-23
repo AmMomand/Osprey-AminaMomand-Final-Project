@@ -10,4 +10,5 @@ public static final By LOGIN_BUTTON_IN_HOME_PAGE = By.xpath("//*[@id='root']/div
 public static final By LETS_GET_YOU_STARTED_TITLE = By.xpath("/html/body/div[1]/div/div[2]/div/div/h2[1]");
 
 
+
 }

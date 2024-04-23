@@ -7,8 +7,8 @@ Feature: Plan Management
     Then user clicks on the Login button
     And user enters valid username "supervisor" and valid password "tek_supervisor"
     And  user clicks on the Sign In button
-    Then user should be navigated to "Customer Service Portal"
-    When user clicks on the "Plans" button
+    Then user should be navigated to Customer Service Portal
+    When user clicks on the Plans button
 
   @PlanDataValidation
   Scenario: Validate Plans Data

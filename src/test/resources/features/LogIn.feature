@@ -11,7 +11,7 @@ Feature: Login Functionality
   Description: user should be able to log in with valid credentials to access the Customer Service Portal.
     And user enters valid username "supervisor" and valid password "tek_supervisor"
     And  user clicks on the Sign In button
-    Then user should be navigated to "Customer Service Portal"
+    Then user should be navigated to Customer Service Portal
 
 
 @Invalid_Login_attempt
