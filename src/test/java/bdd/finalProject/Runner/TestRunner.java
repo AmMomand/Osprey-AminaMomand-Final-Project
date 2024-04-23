@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "StepDefinitions",
-        dryRun = true,
+        dryRun = false,
         monochrome = false, //-> if true, this will avoid writing extra symbols and will show us a clear view of the output
         plugin = {
                 "pretty",

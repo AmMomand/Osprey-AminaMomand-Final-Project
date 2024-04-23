@@ -8,7 +8,7 @@ Feature: Profile Management
     And user enters valid username "supervisor" and valid password "tek_supervisor"
     And  user clicks on the Sign In button
     Then user should be navigated to "Customer Service Portal"
-    And user clicks on the "Profile" button
+    And user clicks on the Profile button
 
   @ProfileInformation
   Scenario: Validate information in Profile
@@ -23,4 +23,4 @@ Feature: Profile Management
   Scenario: Validate User is redirected to Home page after logout button is clicked
   Description: When user logs out, user should be redirected to the home page to ensure secure access.
     When user clicks on the Logout button
-    Then user should be navigated to "Home page"
+    Then user should be navigated to Home page

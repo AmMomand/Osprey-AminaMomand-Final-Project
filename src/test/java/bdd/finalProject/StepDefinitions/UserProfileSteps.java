@@ -3,6 +3,7 @@ package bdd.finalProject.StepDefinitions;
 
 import bdd.finalProject.Pages.UserProfilePage;
 import bdd.finalProject.utility.SeleniumUtilities;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
 
@@ -10,6 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserProfileSteps extends SeleniumUtilities {
+
+
+    @And("user clicks on the Profile button")
+    public void user_clicks_on_Profile_button(){
+        clickElement(UserProfilePage.SIDE_PROFILE_BUTTON);
+    }
 
     @Then("validate STATUS is (.*)$")
     public void validate_STATUS_is(String expectedStatus) {

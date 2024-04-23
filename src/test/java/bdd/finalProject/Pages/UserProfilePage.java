@@ -11,7 +11,6 @@ public static final By FULL_NAME = By.xpath("//p[contains(text(), 'Supervisor')]
 public static final By USER_NAME = By.xpath("//p[contains(text(), 'supervisor')]");
 public static final By AUTHORITIES = By.xpath("/html/body/div[3]/div[3]/div/div/div/div/div/div[5]/ul/li");
 public static final By LOGOUT_BUTTON = By.xpath("/html/body/div[3]/div[3]/div/div/footer/div/button[1]");
-public static final By LETS_GET_YOU_STARTED_TITLE = By.xpath("/html/body/div[1]/div/div[2]/div/div/h2[1]");
 
 
 }

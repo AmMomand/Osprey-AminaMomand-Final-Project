@@ -13,23 +13,18 @@ Feature: Login Functionality
     And  user clicks on the Sign In button
     Then user should be navigated to "Customer Service Portal"
 
-  @InvalidUsername
-  Scenario: Login with invalid username
-  Description: If user enters an invalid username, user should see an error message.
-    Then user enters invalid username "supervisor1" and valid password "tek_supervisor"
-    And  user clicks on the Sign In button
-    Then error message "User supervisor1 not found" should be displayed
 
-  @InvalidPassword
-  Scenario: Login with invalid password
-  Description: If user enters an invalid password, user should see an error message.
-    Then user enters valid username "supervisor" and invalid password "tek_supervisor1"
+@Invalid_Login_attempt
+  Scenario Outline: Login with invalid credentials
+  Description: if user attempts to Login with invalid credentials, user should see an error message
+    Then user enters <UserName> and <Password>
     And  user clicks on the Sign In button
-    Then error message "Password not matched" should be displayed
+    Then this error message <ErrorMessage> should be displayed
+    Examples:
+      | UserName    | Password        | ErrorMessage               |
+      | supervisor1 | tek_supervisor  | User supervisor1 not found |
+      | supervisor  | tek_supervisor1 | Password not matched       |
+      | supervisor1 | tek_supervisor1 | User supervisor1 not found |
 
-  @InvalidUsernameAndPassword
-  Scenario: Login with invalid password and invalid username
-  Description: If user enters both an invalid username and password, user should see an error message.
-    Then user enters invalid username "supervisor1" and invalid password "tek_supervisor1"
-    And  user clicks on the Sign In button
-    Then error message "User supervisor1 not found" should be displayed
+
+

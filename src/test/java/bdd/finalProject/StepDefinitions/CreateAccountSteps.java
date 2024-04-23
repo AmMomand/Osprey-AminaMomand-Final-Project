@@ -70,7 +70,7 @@ public class CreateAccountSteps extends SeleniumUtilities {
     }
 
     @Then("error message (.*) should be displayed$")
-    public void error_message_should_be_displayed(String errorMessage) {
+    public void error_message_of_existing_email_should_be_displayed(String errorMessage) {
 // Verify the error message is displayed
         String actualErrorMessage = getElementText(CreateAccountPage.ERROR_MESSAGE_CREATING_ACCOUNT_WITH_EXISTING_EMAIL_ADDRESS);
         assert actualErrorMessage.equals(errorMessage) : "Error message is not as expected";
@@ -82,4 +82,3 @@ public class CreateAccountSteps extends SeleniumUtilities {
 
 
 
-}
