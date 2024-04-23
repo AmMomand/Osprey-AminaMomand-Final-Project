@@ -1,9 +1,15 @@
 package bdd.finalProject.StepDefinitions;
 
 
+import bdd.finalProject.utility.SeleniumUtilities;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.WebDriver;
 
-public class PlansSteps {
+public class PlansSteps extends SeleniumUtilities {
+
+    public PlansSteps(WebDriver driver) {
+        super(driver);
+    }
 
     @Then("validate (.*) rows of data are present$")
     public void validate_rows_of_data_are_present(int expectedRowCount) {

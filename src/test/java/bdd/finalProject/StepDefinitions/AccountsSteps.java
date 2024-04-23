@@ -1,15 +1,21 @@
 package bdd.finalProject.StepDefinitions;
 
-
+import bdd.finalProject.utility.SeleniumUtilities;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 
-public class AccountsSteps {
+public class AccountsSteps extends SeleniumUtilities {
+
+    public AccountsSteps(WebDriver driver) {
+        super(driver);
+    }
 
     @Given("user is on the home page$")
     public void user_is_on_the_home_page() {
 // Navigate to the home page
+
     }
 
     @When("user clicks on the Login button$")

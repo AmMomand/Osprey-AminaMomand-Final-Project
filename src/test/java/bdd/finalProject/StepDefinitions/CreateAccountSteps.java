@@ -1,11 +1,17 @@
 package bdd.finalProject.StepDefinitions;
 
 
+import bdd.finalProject.utility.SeleniumUtilities;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 
-public class CreateAccountSteps  {
+public class CreateAccountSteps extends SeleniumUtilities {
+
+    public CreateAccountSteps(WebDriver driver) {
+        super(driver);
+    }
 
     @When("user clicks on the (.*) button$")
     public void user_clicks_on_the(String buttonName) {

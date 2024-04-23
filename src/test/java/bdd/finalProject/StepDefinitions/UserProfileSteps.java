@@ -1,9 +1,15 @@
 package bdd.finalProject.StepDefinitions;
 
 
+import bdd.finalProject.utility.SeleniumUtilities;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.WebDriver;
 
-public class UserProfileSteps {
+public class UserProfileSteps extends SeleniumUtilities {
+    public UserProfileSteps(WebDriver driver) {
+        super(driver);
+    }
+
     @Then("validate STATUS is (.*)$")
     public void validate_STATUS_is(String expectedStatus) {
 // Verify the STATUS
