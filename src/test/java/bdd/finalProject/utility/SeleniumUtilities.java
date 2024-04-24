@@ -82,48 +82,4 @@ public class SeleniumUtilities extends BaseSetup {
 
 }
 
-/*
-EXPLANATION:
-This Java class, named SeleniumUtilities, extends the BaseSetup class and provides various utility methods for Selenium
-WebDriver operations. Here's a detailed explanation of each method:
 
-1. waitForElementVisible(By locator): This method waits for an element to be visible using the specified locator. It
-   returns the visible element.
-
-2. waitForElementClickable(By locator): This method waits for an element to be clickable using the specified locator. It
-   returns the clickable element.
-
-3. findElement(By locator): This method finds an element using the specified locator. It waits for the element to be visible
-   before returning it.
-
-4. findElementS(By locator): This method finds all elements using the specified locator. It waits for all elements to be
-   visible before returning them.
-
-5. clickOnElement(By locator): This method clicks on an element using the specified locator. It waits for the element to
-   be clickable before clicking.
-
-6. sendText(By locator, String text): This method sends text to an element using the specified locator. It waits for the
-   element to be visible before sending text.
-
-7. getElementText(By locator): This method gets the text of an element using the specified locator. It waits for the
-   element to be visible before getting text.
-
-8. isElementEnabled(By locator): This method checks if an element is enabled using the specified locator. It waits for
-   the element to be visible before checking.
-
-9. selectFromDropDownByValue(By locator, String value): This method selects an option from a dropdown by value using the
-   specified locator and value.
-
-10. selectFromDropDownByIndex(By locator, int index): This method selects an option from a dropdown by index using the
-    specified locator and index.
-
-11. selectDropDownByText(By locator, String text): This method selects an option from a dropdown by visible text using
-    the specified locator and text.
-
-12. clearText(By locator): This method clears the text of an element using the specified locator. It waits for the element
-    to be visible before clearing text.
-
-These methods provide a convenient way to perform common Selenium WebDriver operations, such as waiting for elements,
-clicking, sending text, getting text, and selecting options from dropdowns. They use the WebDriverWait class to wait for
-elements to be visible or clickable, making the code more robust and efficient.
- */

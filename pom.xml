@@ -22,6 +22,7 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>7.16.1</version>
+            <scope>test</scope>
         </dependency>
 
 
@@ -30,6 +31,7 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.18.1</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- Dependency for cucumber Gherkin -->
@@ -37,6 +39,7 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-gherkin</artifactId>
             <version>7.16.1</version>
+            <scope>test</scope>
         </dependency>
 
 
@@ -46,6 +49,7 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>7.17.0</version>
+            <scope>test</scope>
         </dependency>
 
 
@@ -65,21 +69,6 @@
         </dependency>
 
 
-        <!-- Dependency for Error Prone -->
-        <dependency>
-            <groupId>com.google.errorprone</groupId>
-            <artifactId>error_prone_annotations</artifactId>
-            <version>2.26.1</version>
-        </dependency>
-
-
-        <!-- Dependency for Jacoco -->
-        <dependency>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.12</version>
-        </dependency>
-
 
     </dependencies>
 
@@ -91,16 +80,10 @@
                 <version>3.1.2</version>
                 <configuration>
                     <includes>
-                        <include>RunFeatures.java</include>
+                        <include>TestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.2.0</version>
-            </plugin>
-
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
@@ -113,12 +96,12 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Osprey_AminaMomand_Final_Project_BDD</projectName>
+                            <projectName>Cucumber Framework</projectName>
                             <skip>false</skip>
                             <outputDirectory>${project.build.directory}/cucumber-report</outputDirectory>
                             <inputDirectory>${project.build.directory}/jsonReports</inputDirectory>
                             <jsonFiles>
-                                <param>*/.json</param>
+                                <param>**/*.json</param>
                             </jsonFiles>
                             <!-- optional, set true to fail build on test failures -->
                             <checkBuildResult>false</checkBuildResult>
@@ -126,27 +109,9 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.12</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>prepare-agent</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>report</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>report</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
 
 
 </project>

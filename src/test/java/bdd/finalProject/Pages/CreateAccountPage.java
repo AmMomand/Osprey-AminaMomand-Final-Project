@@ -14,5 +14,5 @@ public static final By SELECT_MARITAL_STATUS_DROPDOWN = By.xpath("/html/body/div
 public static final By EMPLOYMENT_STATUS_INPUT_FIELD = By.xpath("/html/body/div[1]/div/div[2]/div/div/div/form/div/div[1]/div[7]/input");
 public static final By DATE_OF_BIRTH = By.xpath("/html/body/div[1]/div/div[2]/div/div/div/form/div/div[1]/div[8]/input");
 public static final By CREATE_ACCOUNT_BUTTON = By.xpath("/html/body/div[1]/div/div[2]/div/div/div/form/div/div[2]/button[1]");
-public static final By ERROR_MESSAGE_CREATING_ACCOUNT_WITH_EXISTING_EMAIL_ADDRESS = By.xpath("/html/body/div[1]/div/div[2]/div/div/div/form/div[1]");
+public static final By ERROR_MESSAGE_CREATING_ACCOUNT_WITH_EXISTING_EMAIL_ADDRESS = By.xpath("//*[@id='root']/div/div[2]/div/div/div/form/div[1]/text()");
 }
