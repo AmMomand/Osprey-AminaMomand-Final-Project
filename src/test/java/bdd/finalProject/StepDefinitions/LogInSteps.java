@@ -5,6 +5,8 @@ import bdd.finalProject.Pages.LogInPage;
 import bdd.finalProject.utility.SeleniumUtilities;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 public class LogInSteps extends SeleniumUtilities {
 
@@ -14,6 +16,11 @@ public class LogInSteps extends SeleniumUtilities {
     @When("user enters valid username (.*) and valid password (.*)$")
     public void user_enters_valid_username_and_password(String username, String password) {
         // Enter the username and password
+        // Enter the username and password
+        WebElement userNameInputField = getDriver().findElement(LogInPage.USER_NAME_INPUT_FIELD);
+        WebElement passwordInputField = getDriver().findElement(LogInPage.PASSWORD_INPUT_FIELD);
+        Assert.assertTrue(userNameInputField.isDisplayed() && userNameInputField.isEnabled(), "Username input field is not visible or enabled");
+        Assert.assertTrue(passwordInputField.isDisplayed() && passwordInputField.isEnabled(), "Password input field is not visible or enabled");
         sendText(LogInPage.USER_NAME_INPUT_FIELD, username);
         sendText(LogInPage.PASSWORD_INPUT_FIELD, password);
     }
@@ -24,8 +31,7 @@ public class LogInSteps extends SeleniumUtilities {
         // Click on the Sign In button
         clickOnElement(LogInPage.SIGN_IN_BUTTON);
     }
-//      sendText(LogInPage.USER_NAME_INPUT_FIELD, username);
-//        sendText(LogInPage.PASSWORD_INPUT_FIELD, password);
+
 
     @Then("user enters (.*) and (.*)$")
     public void user_enters_invalid_credentials(String username, String password) {
@@ -37,9 +43,13 @@ public class LogInSteps extends SeleniumUtilities {
 
     @Then("this error message (.*) should be displayed$")
     public void error_message_for_the_log_in_attempt_should_be_displayed(String errorMessage) {
-// Verify the error message is displayed
+        // Verify the error message is displayed
+        WebElement errorMessageElement = getDriver().findElement(LogInPage.ERROR_MESSAGE);
+        Assert.assertTrue(errorMessageElement.isDisplayed(), "Error message is not visible");
         String actualErrorMessage = getElementText(LogInPage.ERROR_MESSAGE);
         assert actualErrorMessage.equals(errorMessage) : "Error message is not as expected";
+
+
 
     }
 
@@ -51,34 +61,39 @@ public class LogInSteps extends SeleniumUtilities {
 }
 /*
 EXPLANATION:
-1. user_clicks_on_the_login_button():
-    - This method simulates a user clicking on the Login button on the Home Page.
-    - It uses the clickOnElement method from SeleniumUtilities to click on the element with the locator
-      HomePage.LOGIN_BUTTON_IN_HOME_PAGE.
-    - This action would typically take the user to the Log In Page.
+Methods:
 
-2. user_enters_valid_username_and_password(String username, String password):
-    - This method simulates a user entering a valid username and password on the Log In Page.
-    - It uses the sendText method from SeleniumUtilities to enter the provided username and password into the corresponding
-      input fields.
-    - The username and password parameters are provided by the Cucumber test scenario.
+1. user_enters_valid_username_and_password(String username, String password)
 
-3. user_clicks_on_the_sign_in_button():
-    - This method simulates a user clicking on the Sign In button on the Log In Page.
-    - It uses the clickOnElement method from SeleniumUtilities to click on the element with the locator LogInPage.SIGN_IN_BUTTON.
-    - This action would typically log the user in and take them to the next page.
+- Purpose: Enters a valid username and password in the login form.
+- Implementation:
+    - Retrieves the username and password input fields using getDriver().findElement().
+    - Asserts that the input fields are visible and enabled using Assert.assertTrue().
+    - Enters the provided username and password using sendText().
 
-4. user_enters_invalid_credentials(String username, String password):
-    - This method simulates a user entering invalid username and password on the Log In Page.
-    - It uses the sendText method from SeleniumUtilities to enter the provided username and password into the corresponding
-      input fields.
-    - The username and password parameters are provided by the Cucumber test scenario.
+1. user_clicks_on_the_sign_in_button()
 
-5. error_message_for_the_log_in_attempt_should_be_displayed(String errorMessage):
-    - This method verifies that the expected error message is displayed when attempting to log in with invalid credentials.
-    - It uses the getElementText method from SeleniumUtilities to get the text of the error message element.
-    - It then asserts that the actual error message matches the expected error message provided by the Cucumber test scenario.
+- Purpose: Clicks the Sign In button.
+- Implementation: Calls clickOnElement() to click the Sign In button.
 
-These methods work together to simulate a user attempting to log in, and verify that the expected error message is
-displayed when invalid credentials are used.
+1. user_enters_invalid_credentials(String username, String password)
+
+- Purpose: Enters invalid credentials (username and password) in the login form.
+- Implementation: Similar to the first method, but for invalid credentials.
+
+1. error_message_for_the_log_in_attempt_should_be_displayed(String errorMessage)
+
+- Purpose: Verifies that the expected error message is displayed when attempting to log in with invalid credentials.
+- Implementation:
+    - Retrieves the error message element using getDriver().findElement().
+    - Asserts that the error message is visible using Assert.assertTrue().
+    - Retrieves the actual error message text using getElementText().
+    - Asserts that the actual error message matches the expected error message using assert actualErrorMessage.equals(errorMessage).
+
+Notes:
+
+- The @When and @Then annotations indicate that these methods are part of a Cucumber test scenario.
+- The methods use Selenium WebDriver interactions (e.g., findElement(), sendText(), clickOnElement()) to interact with the login form.
+- The Assert.assertTrue() and assert statements are used to verify that the expected conditions are met (e.g., input fields are visible and enabled, error message is displayed).
+- The LogInPage class is likely a page object that contains the locators for the elements on the login page.
  */

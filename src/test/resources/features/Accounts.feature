@@ -13,7 +13,7 @@ Feature: Accounts Management
   @DefaultRows
   Scenario: Verify Default Rows Per Page
   Description: By default, user should see 5 rows per page.
-    Then user should see "5" rows per page by default
+    Then user should see 5 rows per page by default
 
   @SelectedRows
   Scenario Outline: Validate Rows Per Page with Different Show Per Page Options

@@ -12,22 +12,23 @@ public class HomePageSteps extends SeleniumUtilities {
 
     @Given("user is on the home page")
     public void user_is_on_the_home_page() {
-// Navigate to the home page
+        // Navigate to the home page
         String expectedTitle = getElementText(HomePage.LETS_GET_YOU_STARTED_TITLE);
-        Assert.assertEquals(expectedTitle, "Lets get you started");
+        Assert.assertEquals(expectedTitle, "Lets get you started", "User is not on the home page");
+
 
     }
 
     @Then("title of the page should be (.*)$")
     public void title_of_the_page_should_be(String title) {
         String actualTitle = getElementText(HomePage.TITLE_OF_THE_HOME_PAGE);
-        assert actualTitle.equals(title) : "Title of the page is not as expected";
+        assert actualTitle.equals(title) : "Title of the page is not as expected. Expected: " + title + ", but was: " + actualTitle;
     }
 
     @Then("(.*) button should be visible$")
     public void button_should_be_visible(String button) {
         boolean isVisible = isElementEnabled(HomePage.CREATE_PRIMARY_ACCOUNT_BUTTON);
-        assert isVisible : "Create Primary Account button is not visible";
+        assert isVisible : "Button" + button + "Create Primary Account button is not visible";
 
 
     }
@@ -50,30 +51,46 @@ public class HomePageSteps extends SeleniumUtilities {
 }
 /*
 EXPLANATION:
-This Java class, named HomePageSteps, extends SeleniumUtilities and defines the step definitions for the Home Page feature
-using Cucumber.
+Methods:
 
-Here's a breakdown of the methods:
+1. user_is_on_the_home_page()
 
-1. user_should_navigate_to_homePage():
-    - This method verifies that the user is navigated to the Home page.
-    - It uses the getElementText method from SeleniumUtilities to get the text of the "Lets get you started" title element.
-    - It then asserts that the expected title matches the actual title.
-2. title_of_the_page_should_be(String title):
-    - This method verifies that the title of the page matches the expected title.
-    - It uses the getElementText method from SeleniumUtilities to get the text of the page title element.
-    - It then asserts that the actual title matches the expected title.
-3. button_should_be_visible(String button):
-    - This method verifies that the specified button is visible.
-    - It uses the isElementEnabled method from SeleniumUtilities to check if the button is enabled (visible).
-    - It then asserts that the button is visible.
+- Purpose: Verifies that the user is on the Home Page.
+- Implementation:
+    - Retrieves the text of the "Let's get you started" title element using getElementText(HomePage.LETS_GET_YOU_STARTED_TITLE).
+    - Asserts that the actual title equals "Lets get you started" using Assert.assertEquals(expectedTitle,
+      "Lets get you started", "User is not on the home page").
 
-These methods are crucial for the Home Page feature because they:
+1. title_of_the_page_should_be(String title)
 
-* Verify the user is navigated to the correct page
-* Verify the title of the page
-* Verify the visibility of the "Create Primary Account" button
+- Purpose: Verifies that the title of the page matches the expected title.
+- Implementation:
+    - Retrieves the text of the page title element using getElementText(HomePage.TITLE_OF_THE_HOME_PAGE).
+    - Asserts that the actual title equals the expected title using assert actualTitle.equals(title) : "Title of the
+      page is not as expected. Expected: " + title + ", but was: " + actualTitle;
 
-Note that the methods use SeleniumUtilities methods to interact with the page elements, and Assert statements to verify
-the expected conditions.
+1. button_should_be_visible(String button)
+
+- Purpose: Verifies that the specified button is visible.
+- Implementation:
+    - Checks if the Create Primary Account button is enabled (visible) using isElementEnabled(HomePage.CREATE_PRIMARY_ACCOUNT_BUTTON).
+    - Asserts that the button is visible using assert isVisible : "Button" + button + "Create Primary Account button is not visible";
+
+1. user_clicks_CreateAccount_button()
+
+- Purpose: Simulates a click on the Create Primary Account button.
+- Implementation: Calls clickOnElement(HomePage.CREATE_PRIMARY_ACCOUNT_BUTTON) to click the button.
+
+1. user_clicks_on_the_login_button()
+
+- Purpose: Simulates a click on the Login button.
+- Implementation: Calls clickOnElement(HomePage.LOGIN_BUTTON_IN_HOME_PAGE) to click the button.
+
+Notes:
+
+- The methods in this class are designed to be used in a Cucumber test scenario to verify the functionality of the Home Page.
+- The getElementText method is used to retrieve the text of an element, and Assert.assertEquals is used to verify that the actual text matches the expected text.
+- The isElementEnabled method is used to check if an element is enabled (visible), and assert is used to verify that the element is visible.
+- The clickOnElement method is used to simulate a click on an element.
+- The HomePage class is likely a page object that contains the locators for the elements on the Home Page.
  */

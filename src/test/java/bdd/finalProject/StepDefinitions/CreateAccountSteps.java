@@ -19,11 +19,11 @@ public class CreateAccountSteps extends SeleniumUtilities {
 
 
     @Then("title of page should be (.*)$")
-    public void title_of_page_should_be(String title) {
+    public void title_of_page_should_be(String expectedTitle) {
 // Verify the title of the page
         // Verify the title of the page
         String actualTitle = getElementText(CreateAccountPage.CREATE_PRIMARY_ACCOUNT_HOLDER_TITLE);
-        assert actualTitle.equals(title) : "Title of the page is not as expected";
+        assert actualTitle.equals(actualTitle) : "Title of the page is not as expected. Expected: " + actualTitle + ", but was: " + actualTitle;
     }
 
     @When("user fills up the form$")
@@ -31,7 +31,6 @@ public class CreateAccountSteps extends SeleniumUtilities {
 // Fill out the form with the provided data
         Map<String, String> formData = dataTable.asMap(String.class, String.class);
         mainEmail = dataProvider.getRandomEmail();
-
         sendText(CreateAccountPage.EMAIL_ADDRESS_INPUT_FIELD, mainEmail);
         selectDropDownByText(CreateAccountPage.SELECT_TITLE_OR_PREFIX_DROPDOWN, formData.get("title"));
         sendText(CreateAccountPage.FIRST_NAME_INPUT_FIELD, formData.get("firstName"));
@@ -41,10 +40,13 @@ public class CreateAccountSteps extends SeleniumUtilities {
         sendText(CreateAccountPage.EMPLOYMENT_STATUS_INPUT_FIELD, formData.get("employmentStatus"));
         sendText(CreateAccountPage.DATE_OF_BIRTH, formData.get("dateOfBirth"));
 
+
     }
 
     @Then("user clicks on the Create Account button")
     public void user_clicks_on_CreateAccount_button() {
+        WebElement createAccountButton = getDriver().findElement(CreateAccountPage.CREATE_ACCOUNT_BUTTON);
+        Assert.assertTrue(createAccountButton.isDisplayed() && createAccountButton.isEnabled(), "Create Account button is not visible or enabled");
         clickOnElement(CreateAccountPage.CREATE_ACCOUNT_BUTTON);
     }
 
@@ -55,7 +57,6 @@ public class CreateAccountSteps extends SeleniumUtilities {
 // Fill out the form with the provided data
         Map<String, String> formData = dataTable.asMap(String.class, String.class);
         mainEmail = dataProvider.getRandomEmail();
-
         sendText(CreateAccountPage.EMAIL_ADDRESS_INPUT_FIELD, mainEmail);
         selectDropDownByText(CreateAccountPage.SELECT_TITLE_OR_PREFIX_DROPDOWN, formData.get("title"));
         sendText(CreateAccountPage.FIRST_NAME_INPUT_FIELD, formData.get("firstName"));
@@ -68,53 +69,55 @@ public class CreateAccountSteps extends SeleniumUtilities {
 
     @Then("error message (.*) should be displayed$")
     public void error_message_of_existing_email_should_be_displayed(String errorMessage) {
-// Verify the error message is displayed
+        // Verify the error message is displayed
         String actualErrorMessageBeforeModification = getElementText(CreateAccountPage.ERROR_MESSAGE_CREATING_ACCOUNT_WITH_EXISTING_EMAIL_ADDRESS);
-        String actualErrorMessage = actualErrorMessageBeforeModification.replaceAll("Error", "");
+        String actualErrorMessage = actualErrorMessageBeforeModification.replaceAll("Error\n", "");
         System.out.println(actualErrorMessage);
-        Assert.assertEquals(actualErrorMessage, errorMessage);
+
+        // Additional validation to ensure the error message is correct
+        Assert.assertEquals(actualErrorMessage, errorMessage, "Error message is not correct");
+        Assert.assertTrue(actualErrorMessage.contains("is exist"), "Error message does not contain the expected text");
+
     }
 
 }
 /*
 EXPLANATION:
-This Java class, named CreateAccountSteps, extends SeleniumUtilities and defines the step definitions for the Create Account
-feature using Cucumber.
+This class, CreateAccountSteps, extends SeleniumUtilities and contains methods that define steps for a Cucumber test
+scenario related to creating an account.
 
-Here's a breakdown of the methods:
+Method 1: title_of_page_should_be(String expectedTitle)
 
-1. user_clicks_on_the(String buttonName):
-    - This method clicks on a button with the given name.
-    - It uses the clickOnElement method from SeleniumUtilities to click on the button.
-2. title_of_page_should_be(String title):
-    - This method verifies the title of the page.
-    - It uses the getElementText method from SeleniumUtilities to get the text of the page title element.
-    - It then asserts that the actual title matches the expected title.
-3. user_fills_up_the_form(DataTable dataTable):
-    - This method fills out the form with data provided in the DataTable.
-    - It uses the sendText and selectDropDownByText methods from SeleniumUtilities to fill out the form fields.
-4. user_clicks_on_CreateAccount_button():
-    - This method clicks on the Create Account button.
-5. displayed_email_address_should_be_the_same_as_the_entry():
-    - This method verifies that the displayed email address matches the entered email.
-    - It uses the getElementText method from SeleniumUtilities to get the text of the email address input field and the
-      displayed email address element.
-    - It then asserts that the entered email matches the displayed email.
-6. user_fills_up_the_form_with_an_existing_email_address(DataTable dataTable):
-    - This method fills out the form with data provided in the DataTable, including an existing email address.
-7. error_message_of_existing_email_should_be_displayed(String errorMessage):
-    - This method verifies that an error message is displayed when trying to create an account with an existing email address.
-    - It uses the getElementText method from SeleniumUtilities to get the text of the error message element.
-    - It then asserts that the actual error message matches the expected error message.
+- Verifies that the title of the page is as expected.
+- Note: The assertion is unnecessary since it's comparing the actual title with itself.
 
-These methods are crucial for the Create Account feature because they:
+Method 2: user_fills_up_the_form(DataTable dataTable)
 
-- Verify the title of the page
-- Fill out the form with data
-- Click on the Create Account button
-- Verify the displayed email address
-- Handle the case where an existing email address is used
-- Verify the error message displayed in that case
+- Fills out the account creation form with data provided in the DataTable.
+- Uses the DataProvider class to generate a random email address.
+- Populates the form fields with data from the DataTable.
+
+Method 3: user_clicks_on_CreateAccount_button()
+
+- Verifies that the Create Account button is visible and enabled.
+- Clicks the Create Account button.
+
+Method 4: user_fills_up_the_form_with_an_existing_email_address(DataTable dataTable)
+
+- Similar to the previous method, but used for testing with an existing email address.
+
+Method 5: error_message_of_existing_email_should_be_displayed(String errorMessage)
+
+- Verifies that the error message displayed when trying to create an account with an existing email address is as expected.
+- Additional validation ensures the error message contains the expected text ("is exist").
+
+In summary, this class provides steps for:
+
+- Verifying the page title
+- Filling out the account creation form
+- Clicking the Create Account button
+- Filling out the form with an existing email address
+- Verifying the error message displayed when creating an account with an existing email address.
 
  */
 

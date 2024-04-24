@@ -15,9 +15,10 @@ public class PlansSteps extends SeleniumUtilities {
 
     @Then("validate (.*) rows of data are present$")
     public void validate_rows_of_data_are_present(int expectedRowCount) {
-// Verify the number of rows
+        // Verify the number of rows
         int actualRowCount = getDriver().findElements(PlansPage.PLANS_ALL_ROWS).size();
-        assert actualRowCount == expectedRowCount : "Number of rows is not as expected";
+        assert actualRowCount == expectedRowCount : "Number of rows is not as expected. Actual: " + actualRowCount + ", Expected: " + expectedRowCount;
+
 
     }
 
@@ -37,7 +38,7 @@ public class PlansSteps extends SeleniumUtilities {
         // I compared the retrieved create date text with the formatted expected date.
         // If they don't match, the assertion fails, indicating that the created date is not today's date.
         String expectedDateFormatted = expectedDate.format(formatter);
-        assert createDateText.equals(expectedDateFormatted) : "Create date is not today's date";
+    assert createDateText.equals(expectedDateFormatted) : "Create date is not today's date";
 
 
     }
