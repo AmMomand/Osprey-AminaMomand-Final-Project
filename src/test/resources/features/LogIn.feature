@@ -17,7 +17,7 @@ Feature: Login Functionality
 @Invalid_Login_attempt
   Scenario Outline: Login with invalid credentials
   Description: if user attempts to Login with invalid credentials, user should see an error message
-    Then user enters <UserName> and <Password>
+    Then user enters "<UserName>" and "<Password>"
     And  user clicks on the Sign In button
     Then this error message <ErrorMessage> should be displayed
     Examples:

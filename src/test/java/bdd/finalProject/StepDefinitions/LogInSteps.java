@@ -32,7 +32,7 @@ public class LogInSteps extends SeleniumUtilities {
     }
 
 
-    @Then("user enters (.*) and (.*)$")
+    @Then("user enters {string} and {string}")
     public void user_enters_invalid_credentials(String username, String password) {
         sendText(LogInPage.USER_NAME_INPUT_FIELD, username);
         sendText(LogInPage.PASSWORD_INPUT_FIELD, password);
