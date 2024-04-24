@@ -29,6 +29,7 @@ public class AccountsSteps extends SeleniumUtilities {
     @Then("user should see (.*) rows per page$")
     public void user_should_see_rows_per_page(String expectedRows) {
         int actualRows = getDriver().findElements(AccountsPage.PRIMARY_ACCOUNTS_ALL_ROWS).size();
+        // Integer.parseInt() is a method that converts a String to an integer. It takes a String argument and returns an int value.
         Assert.assertEquals(Integer.parseInt(expectedRows), actualRows);
 
     }
