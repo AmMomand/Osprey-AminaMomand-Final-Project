@@ -100,7 +100,7 @@
                     <properties>
                         <property>
                             <name>cucumber.plugin</name>
-                            <value>json:target/cucumber-reports/cucumber.json</value>
+                            <value>json:target/jsonReports/cucumber.json</value>
                         </property>
                     </properties>
                 </configuration>
