@@ -77,6 +77,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Dependency for Cucumber Reporting -->
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>cucumber-reporting</artifactId>
+            <version>5.8.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -89,7 +96,35 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/Configs/testg.xml</suiteXmlFile>
                     </suiteXmlFiles>
+
+                    <properties>
+                        <property>
+                            <name>cucumber.plugin</name>
+                            <value>json:target/cucumber-reports/cucumber.json</value>
+                        </property>
+                    </properties>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>5.8.0</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>Osprey_AminaMomand_Final_Project_BDD</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber-reports/cucumber.json</cucumberOutput>
+                            <buildNumber>${project.version}</buildNumber>
+                            <parallelTesting>false</parallelTesting>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
